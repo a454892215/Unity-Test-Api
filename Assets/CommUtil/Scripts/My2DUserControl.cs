@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-//using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets._2D
 {
@@ -26,8 +26,7 @@ namespace UnityStandardAssets._2D
             if (!m_IsJump)
             {
                 // Read the jump input in Update so button presses aren't missed.
-              //  m_IsJump = CrossPlatformInputManager.GetButtonDown("Jump");
-                m_IsJump = Input.GetButtonDown("Jump");
+                m_IsJump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
         }
 
@@ -55,8 +54,7 @@ namespace UnityStandardAssets._2D
             bool crouch = Input.GetKey(KeyCode.LeftControl);
 
             //水平移动 值域：[-1,1]
-            //float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float h = Input.GetAxis("Horizontal");
+            float h = CrossPlatformInputManager.GetAxis("Horizontal");
             if (h != 0)
             {
                 m_Rigidbody2D.velocity = new Vector2(h * x_MaxSpeed, m_Rigidbody2D.velocity.y);
