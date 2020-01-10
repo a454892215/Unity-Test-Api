@@ -142,8 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2168953340307426029}
   - component: {fileID: 2168953340307426030}
-  - component: {fileID: 2168953340307426031}
-  - component: {fileID: 2168953340307426028}
+  - component: {fileID: 7648347768519713537}
   m_Layer: 0
   m_Name: MyMultipurposeCameraRig
   m_TagString: Untagged
@@ -159,7 +158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2168953340307426026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.268, y: 8.9814, z: 0}
+  m_LocalPosition: {x: 13.83842, y: 6.6099887, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2168953340227218446}
@@ -182,25 +181,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2168953340307426031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2168953340307426026}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94b04ec3bda6b7747aa53936ef3b0ae2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clipMoveTime: 0.05
-  returnTime: 0.4
-  sphereCastRadius: 0.1
-  visualiseInEditor: 1
-  closestDistance: 0.5
-  dontClipTag: Player
---- !u!114 &2168953340307426028
+--- !u!114 &7648347768519713537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,12 +190,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2168953340307426026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d3968294210ba4a9d2bb96dfa74a16, type: 3}
+  m_Script: {fileID: 11500000, guid: 4209306738774b2438ab4d8a7fdacb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Target: {fileID: 0}
   m_AutoTargetPlayer: 1
-  m_UpdateType: 1
+  m_UpdateType: 0
   m_MoveSpeed: 3
   m_TurnSpeed: 1
   m_RollSpeed: 0.2
