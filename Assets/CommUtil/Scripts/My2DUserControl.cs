@@ -10,7 +10,7 @@ namespace UnityStandardAssets._2D
         private Rigidbody2D m_Rigidbody2D;
         private Transform m_GroundCheckTransform;
         private bool m_IsGrounded;            // 玩家是否在地面  
-        const float  isGroundedCheckRadius = .2f; // 重叠圆半径 确定是否在地面
+        public float  isGroundedCheckRadius = .2f; // 重叠圆半径 确定是否在地面
         public float x_MaxSpeed = 2f;
         public float jumpForce = 300f;
         private Animator animator;
