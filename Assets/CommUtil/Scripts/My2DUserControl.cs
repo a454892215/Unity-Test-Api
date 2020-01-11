@@ -28,6 +28,25 @@ namespace UnityStandardAssets._2D
                 // Read the jump input in Update so button presses aren't missed.
                 m_IsJump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
+    
+
+            if (Input.GetKey(KeyCode.K))
+            {
+                animator.SetFloat("fAttack", 0.1f);
+            }
+            else if (Input.GetKey(KeyCode.L))
+            {
+                animator.SetFloat("fAttack", 9.99f);
+            }
+            else
+            {
+                animator.SetFloat("fAttack", -1);
+            }
+
+           /* if (CrossPlatformInputManager.GetButtonDown("Fire2"))
+            {
+                animator.SetInteger("attack", 2);
+            }*/
         }
 
 
