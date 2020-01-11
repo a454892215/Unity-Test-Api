@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CommUtil/Scene1.unity
     guid: 636e359fd6225c1429a5700996e53d3e
+  - enabled: 1
+    path: Assets/CommUtil/Scene2.unity
+    guid: d2e16848588617d408611df7ce0c0c86
   m_configObjects: {}

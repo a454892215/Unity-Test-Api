@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class SceneSwitcher : MonoBehaviour
+{
+    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        
+    }
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            ToPreScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ToNextScene();
+        }
+    }
+
+    public void SwitchScene(String sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    //去下一个场景
+    public void ToNextScene()
+    {
+        String currentSceneName = SceneManager.GetActiveScene().name;
+        string num = currentSceneName.Substring(currentSceneName.Length - 1);
+        int targetNum = int.Parse(num) +1;
+        SceneManager.LoadScene("Scene" + targetNum);
+    }
+
+    //去上一个场景
+    public void ToPreScene()
+    {
+        String currentSceneName = SceneManager.GetActiveScene().name;
+        string num = currentSceneName.Substring(currentSceneName.Length - 1);
+        int targetNum = int.Parse(num) - 1;
+        SceneManager.LoadScene("Scene" + targetNum);
+    }
+}
