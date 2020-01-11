@@ -56,10 +56,11 @@ namespace UnityStandardAssets._2D
             Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheckTransform.position, isGroundedCheckRadius);
             for (int i = 0; i < colliders.Length; i++)
             {
-                //如果角色脚部检测到任何一个碰撞 ，则确定在地面上
-                if (colliders[i].gameObject != gameObject)
+                //如果角色脚部检测到任何一个非角色碰撞 并且Y轴速度小于0.01f（避免与可以向上跳的台阶碰撞误判）
+                if (colliders[i].gameObject != gameObject &&  Math.Abs(m_Rigidbody2D.velocity.y) < 0.01f)
                     m_IsGrounded = true;
             }
+            print("==========AddForce===========velocity.y" + m_Rigidbody2D.velocity.y);
             if (m_IsJump && m_IsGrounded)
             {
                 m_Rigidbody2D.AddForce(new Vector2(0f, jumpForce)); //跳跃会和MovePosition冲突
