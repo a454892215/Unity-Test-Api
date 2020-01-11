@@ -60,11 +60,11 @@ namespace UnityStandardAssets._2D
                 if (colliders[i].gameObject != gameObject &&  Math.Abs(m_Rigidbody2D.velocity.y) < 0.01f)
                     m_IsGrounded = true;
             }
-            print("==========AddForce===========velocity.y" + m_Rigidbody2D.velocity.y);
+           // print("==========AddForce===========velocity.y" + m_Rigidbody2D.velocity.y);
             if (m_IsJump && m_IsGrounded)
             {
                 m_Rigidbody2D.AddForce(new Vector2(0f, jumpForce)); //跳跃会和MovePosition冲突
-                print("==========AddForce===========" + transform.position.y);
+               // print("==========AddForce===========" + transform.position.y);
             }
 
             animator.SetBool("isGround", m_IsGrounded);
