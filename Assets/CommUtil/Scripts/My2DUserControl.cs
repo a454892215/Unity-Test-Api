@@ -29,7 +29,6 @@ namespace UnityStandardAssets._2D
                 m_IsJump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
     
-
             if (Input.GetKey(KeyCode.K))
             {
                 animator.SetFloat("fAttack", 0.1f);
