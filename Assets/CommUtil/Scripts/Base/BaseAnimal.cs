@@ -26,9 +26,9 @@ namespace MyGameComm
         void Awake()
         {
 
-           // Color handlesColor;
-           // ColorUtility.TryParseHtmlString("#FF0000", out handlesColor);
-           // Handles.color = Color.red;
+            // Color handlesColor;
+            // ColorUtility.TryParseHtmlString("#FF0000", out handlesColor);
+            // Handles.color = Color.red;
             currentHp = maxHp;
             currentAttack = maxAttack;
             currentDefence = maxDefence;
@@ -44,7 +44,12 @@ namespace MyGameComm
         // Update is called once per frame
         void Update()
         {
+            onMove();
+        }
 
+        protected void onMove()
+        {
+            m_Rigidbody2D.MovePosition(new Vector2(0, 0));
         }
 
         public void OnHpChange(int value)
@@ -67,12 +72,12 @@ namespace MyGameComm
         {
 
             //绘制攻击类型1的范围
-            if(attackType1Range > 0)
+            if (attackType1Range > 0)
             {
                 Handles.color = new Color(1.0f, 0, 0, 0.1f);
                 Handles.DrawSolidDisc(transform.position, Vector3.back, attackType1Range);
             }
-           
+
         }
 #endif
     }
