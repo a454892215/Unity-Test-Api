@@ -2,22 +2,19 @@
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-namespace UnityStandardAssets._2D
+namespace MyGameComm
 {
-    public class My2DUserControl : MonoBehaviour
+    public class My2DUserControl : Platform2DPlayer
     {
         private bool m_IsJump;
-        private Rigidbody2D m_Rigidbody2D;
         private Transform m_GroundCheckTransform;
         private bool m_IsGrounded;            // 玩家是否在地面  
         public float  isGroundedCheckRadius = .2f; // 重叠圆半径 确定是否在地面
         public float x_MaxSpeed = 2f;
         public float jumpForce = 300f;
-        private Animator animator;
+  
         void Start()
         {
-            m_Rigidbody2D = GetComponent<Rigidbody2D>();
-            animator = GetComponent<Animator>();
             m_GroundCheckTransform = transform.Find("GroundCheck");
         }
 
@@ -31,21 +28,21 @@ namespace UnityStandardAssets._2D
     
             if (Input.GetKey(KeyCode.K))
             {
-                animator.SetFloat("fAttack", 0.1f);
+                m_Animator.SetFloat("fAttack", 0.1f);
             }
             else if (Input.GetKey(KeyCode.L))
             {
-                animator.SetFloat("fAttack", 9.99f);
+                m_Animator.SetFloat("fAttack", 9.99f);
             }
             else
             {
-                animator.SetFloat("fAttack", -1);
+                m_Animator.SetFloat("fAttack", -1);
             }
 
-           /* if (CrossPlatformInputManager.GetButtonDown("Fire2"))
-            {
-                animator.SetInteger("attack", 2);
-            }*/
+            /* if (CrossPlatformInputManager.GetButtonDown("Fire2"))
+             {
+                 m_Animator.SetInteger("attack", 2);
+             }*/
         }
 
 
@@ -67,7 +64,7 @@ namespace UnityStandardAssets._2D
                // print("==========AddForce===========" + transform.position.y);
             }
 
-            animator.SetBool("isGround", m_IsGrounded);
+            m_Animator.SetBool("isGround", m_IsGrounded);
             m_IsJump = false;
             // 是否按下左边Ctrl
             bool crouch = Input.GetKey(KeyCode.LeftControl);
@@ -78,7 +75,7 @@ namespace UnityStandardAssets._2D
             {
                 m_Rigidbody2D.velocity = new Vector2(h * x_MaxSpeed, m_Rigidbody2D.velocity.y);
             }
-            animator.SetFloat("xSpeed", Math.Abs(h));
+            m_Animator.SetFloat("xSpeed", Math.Abs(h));
             CheckFlip(h);
 
         }
