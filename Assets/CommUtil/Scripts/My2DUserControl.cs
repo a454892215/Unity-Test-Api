@@ -12,13 +12,13 @@ namespace MyGameComm
         public float  isGroundedCheckRadius = .2f; // 重叠圆半径 确定是否在地面
         public float x_MaxSpeed = 2f;
         public float jumpForce = 300f;
-  
-        void Start()
+
+        protected override void Start()
         {
             m_GroundCheckTransform = transform.Find("GroundCheck");
         }
 
-        private void Update()
+        protected override void Update()
         {
             if (!m_IsJump)
             {
@@ -46,7 +46,7 @@ namespace MyGameComm
         }
 
 
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
             m_IsGrounded = false; //默认不在地面上
             //获取在一个圆的半径范围内的collider

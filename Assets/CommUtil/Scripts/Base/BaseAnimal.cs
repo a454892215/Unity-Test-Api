@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace MyGameComm
 {
+
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Animator))]
     public class BaseAnimal : MonoBehaviour
@@ -18,17 +19,14 @@ namespace MyGameComm
         public int currentDefence;
 
         public int attackType1Range = 2; //攻击类型1范围
-        public float moveVelocity = 1f; //移动速度
+        public float moveSpeedX = 1f; //每秒X轴移动速度
+        public float moveSpeedY = 1f; //移动Y轴移动速度
 
         protected Rigidbody2D m_Rigidbody2D;
         protected Animator m_Animator;
 
-        void Awake()
+        protected virtual void Awake()
         {
-
-            // Color handlesColor;
-            // ColorUtility.TryParseHtmlString("#FF0000", out handlesColor);
-            // Handles.color = Color.red;
             currentHp = maxHp;
             currentAttack = maxAttack;
             currentDefence = maxDefence;
@@ -36,20 +34,23 @@ namespace MyGameComm
             m_Animator = GetComponent<Animator>();
         }
 
-        void Start()
+        protected virtual void Start()
         {
-
         }
 
         // Update is called once per frame
-        void Update()
+        protected virtual void Update()
         {
-            onMove();
+            OnMove();
         }
 
-        protected void onMove()
+        protected virtual void FixedUpdate()
         {
-            m_Rigidbody2D.MovePosition(new Vector2(0, 0));
+
+        }
+
+        protected virtual void OnMove()
+        {
         }
 
         public void OnHpChange(int value)
