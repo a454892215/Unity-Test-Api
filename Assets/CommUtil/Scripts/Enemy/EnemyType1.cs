@@ -19,7 +19,7 @@ namespace MyGameComm
         protected override void Start()
         {
             base.Start();
-            moveSpeedX = 30;
+            moveSpeedX = 50;
         }
 
         // Update is called once per frame
