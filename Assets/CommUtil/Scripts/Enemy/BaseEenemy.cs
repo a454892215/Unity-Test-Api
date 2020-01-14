@@ -28,7 +28,7 @@ namespace MyGameComm
 
         }
 
-        //检测是否可以前进
+        //检测是否可以前进 :如果自身的左边或者右边没有与地面碰撞，则表示到了边界，不能继续向前
         protected bool CanMoveForward(Collider2D collider2D)
         {
             int dir = moveSpeedX > 0 ? 1 : -1;
