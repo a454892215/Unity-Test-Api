@@ -29,19 +29,13 @@ namespace MyGameComm
         }
 
         //检测是否可以前进
-        protected void CanMoveForward(Collider2D collider2D)
+        protected bool CanMoveForward(Collider2D collider2D)
         {
-            Bounds bounds = collider2D.bounds;
-            Vector3 size = bounds.size;
-          //  Ray ray = new Ray(bounds.center, Vector3.down);  //指定原点和方向
-          //  Physics.Linecast(bounds.center, bounds.center + Vector3.down);
-
-            Debug.DrawRay(transform.position, Vector2.down * 0.51f, Color.red);
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, Vector2.down, 0.15f);
-            print("===========size:" + raycastHit2D.collider == null);
-            //  Transform transform_collider2D = collider2D.transform;
-            //  transform_collider2D.InverseTransformPoint(collider2D.bounds.center);
-
+            int dir = moveSpeedX > 0 ? 1 : -1;
+            Vector3 start = transform.position + Vector3.right * (collider2D.bounds.size.x * 0.6f * dir);
+            Vector3 end = start + Vector3.down * 0.5f;
+            RaycastHit2D raycastHit2D = RayUtil.CastLine(start, end, "Ground");
+            return raycastHit2D.collider != null;
         }
 
 #if UNITY_EDITOR

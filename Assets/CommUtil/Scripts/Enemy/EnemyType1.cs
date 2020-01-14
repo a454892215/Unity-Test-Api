@@ -33,11 +33,20 @@ namespace MyGameComm
             CanMoveForward(m_BoxCollider2D);
         }
 
-        private bool isChangeMoveDirection = false;
+
         protected override void OnMove()
         {
-          //  moveByHorizontalSpeed();
-            if (isChangeMoveDirection) moveSpeedX = -moveSpeedX;
+            //  
+            if (CanMoveForward(m_BoxCollider2D))
+            {
+                moveByHorizontalSpeed();
+            }
+            else
+            {
+                moveSpeedX = 0 - moveSpeedX;
+            }
+
+
 
 
         }
