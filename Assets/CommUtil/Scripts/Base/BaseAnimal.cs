@@ -23,7 +23,7 @@ namespace MyGameComm
         public float moveSpeedY = 1f; //移动Y轴移动速度
 
         protected Rigidbody2D m_Rigidbody2D;
-        protected Animator m_Animator;
+        public Animator m_Animator;
 
         protected virtual void Awake()
         {

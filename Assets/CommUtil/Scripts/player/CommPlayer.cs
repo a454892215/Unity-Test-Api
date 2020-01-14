@@ -4,7 +4,10 @@ namespace MyGameComm
 {
     public class CommPlayer : BaseAnimal
     {
-       protected override void Start()
+
+        public float jumpForce = 300f;
+
+        protected override void Start()
         {
             base.Start();
         }
