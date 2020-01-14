@@ -18,16 +18,8 @@ namespace MyGameComm
             base.Awake();
             m_GroundCheckTransform = transform.Find("GroundCheck");
         }
-        protected override void Start()
-        {
-            base.Start();
-        }
 
         // Update is called once per frame
-        protected override void Update()
-        {
-            base.Update();
-        }
 
         //水平移动 值域：[-1,1]
         public float OnHorizontalMove()
@@ -41,7 +33,7 @@ namespace MyGameComm
             return h;
         }
 
-
+        //跳跃
         public void handleJump()
         {
             m_IsGrounded = false; //默认不在地面上
@@ -56,13 +48,12 @@ namespace MyGameComm
             if (m_IsJump && m_IsGrounded)
             {
                 m_Rigidbody2D.AddForce(new Vector2(0f, jumpForce)); //跳跃会和MovePosition冲突
-                                                                    // print("==========AddForce===========" + transform.position.y);
             }
             m_IsJump = false;
             m_Animator.SetBool("isGround", m_IsGrounded);
         }
 
-
+        //转向判断
         public void CheckFlip(float h)
         {
             // 如果玩家不是面向右边 则向右 
@@ -77,7 +68,6 @@ namespace MyGameComm
         {
             // Switch the way the player is labelled as facing.
             m_FacingRight = !m_FacingRight;
-
             // Multiply the player's x local scale by -1.
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
