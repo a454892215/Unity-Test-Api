@@ -12,7 +12,7 @@ namespace MyGameComm
         public float x_MaxSpeed = 2f;
 
         public float x_MaxLimitSpeed = 3.5f;
-        public bool m_IsJump { get; set; }
+
         public bool m_IsGrounded;            // 玩家是否在地面  
 
         protected override void Awake()
@@ -24,27 +24,11 @@ namespace MyGameComm
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
+            updatePlayerIsGround();
         }
 
-        // Update is called once per frame
-
-        //水平移动 值域：[-1,1]
-        public float OnHorizontalMove(float h)
-        {
-            if (h != 0)
-            {
-                float xSpeed = Mathf.Clamp(m_Rigidbody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
-              //  xSpeed = m_IsGrounded ? xSpeed : h * x_MaxSpeed;
-
-
-                m_Rigidbody2D.velocity = new Vector2(xSpeed, m_Rigidbody2D.velocity.y);
-            }
-            m_Animator.SetFloat("xSpeed", Math.Abs(h));
-            return h;
-        }
-
-        //跳跃
-        public void handleJump(float realValidJunpButtonDownTime)
+        //更新玩家是否在地面的状态
+        private void updatePlayerIsGround()
         {
             m_IsGrounded = false; //默认不在地面上
             //获取在一个圆的半径范围内的collider
@@ -55,14 +39,30 @@ namespace MyGameComm
                 if (colliders[i].gameObject != gameObject && Math.Abs(m_Rigidbody2D.velocity.y) < 0.01f)
                     m_IsGrounded = true;
             }
-            if (m_IsJump && m_IsGrounded)
-            {
-                print("==========================realValidJunpButtonDownTime:" + realValidJunpButtonDownTime);
-                float horizontalForce =  m_Rigidbody2D.velocity.x * 100; ;
-                m_Rigidbody2D.AddForce(new Vector2(horizontalForce, jumpForce * 1)); //跳跃会和MovePosition冲突
-            }
-            m_IsJump = false;
             m_Animator.SetBool("isGround", m_IsGrounded);
+        }
+
+        // Update is called once per frame
+
+        //水平移动 值域：[-1,1]
+        public void OnHorizontalMove(float h)
+        {
+            if (h != 0)
+            {
+                float xSpeed = Mathf.Clamp(m_Rigidbody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
+                m_Rigidbody2D.velocity = new Vector2(xSpeed, m_Rigidbody2D.velocity.y);
+            }
+            m_Animator.SetFloat("xSpeed", Math.Abs(h));
+        }
+
+        //当点击跳跃
+        public void OnClickJump(float jumpForceFactor)
+        {
+            if (m_IsGrounded)
+            {
+                float horizontalForce = m_Rigidbody2D.velocity.x * 100; ;
+                m_Rigidbody2D.AddForce(new Vector2(horizontalForce, jumpForce * jumpForceFactor)); //跳跃会和MovePosition冲突
+            }
         }
 
         //转向判断
