@@ -11,7 +11,7 @@ namespace MyGameComm
         public float isGroundedCheckRadius = .2f; // 重叠圆半径 确定是否在地面
         public float x_MaxSpeed = 2f;
 
-        public float x_MaxLimitSpeed = 5f;
+        public float x_MaxLimitSpeed = 3.5f;
         public bool m_IsJump { get; set; }
         public bool m_IsGrounded;            // 玩家是否在地面  
 
@@ -29,16 +29,12 @@ namespace MyGameComm
         // Update is called once per frame
 
         //水平移动 值域：[-1,1]
-        public float OnHorizontalMove()
+        public float OnHorizontalMove(float h)
         {
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
             if (h != 0)
             {
-                //  float xSpeed = Mathf.Clamp(m_Rigidbody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
-                if (m_IsGrounded)
-                {
-                    m_Rigidbody2D.velocity = new Vector2(h * x_MaxSpeed, m_Rigidbody2D.velocity.y);
-                }
+                float xSpeed = Mathf.Clamp(m_Rigidbody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
+                m_Rigidbody2D.velocity = new Vector2(xSpeed, m_Rigidbody2D.velocity.y);
             }
             m_Animator.SetFloat("xSpeed", Math.Abs(h));
             return h;

@@ -24,6 +24,12 @@ namespace MyGameComm
 
         }
 
+        void FixedUpdate()
+        {
+            OnGenerateUserGesture();
+        
+        }
+
         //跳跃按钮按下的持续时间
         private float jumpButtonDownKeepTime = 0f;
 
@@ -48,6 +54,9 @@ namespace MyGameComm
                 print("==========================jumpButtonDownKeepTime:" + jumpButtonDownKeepTime);
             }
 
+            float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            platform2DPlayer.CheckFlip(platform2DPlayer.OnHorizontalMove(h));
+
             if (Input.GetKey(KeyCode.K))
             {
                 platform2DPlayer.m_Animator.SetFloat("fAttack", 0.1f);
@@ -62,13 +71,6 @@ namespace MyGameComm
             }
         }
 
-        void FixedUpdate()
-        {
-            OnGenerateUserGesture();
-            // 是否按下左边Ctrl
-            // bool crouch = Input.GetKey(KeyCode.LeftControl);
-            float h = platform2DPlayer.OnHorizontalMove();
-            platform2DPlayer.CheckFlip(h);
-        }
+
     }
 }
