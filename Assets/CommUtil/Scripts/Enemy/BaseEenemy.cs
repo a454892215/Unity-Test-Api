@@ -9,7 +9,12 @@ namespace MyGameComm
     public class BaseEenemy : BaseAnimal
     {
         public int viewDistance = 5; //巡视范围
-        public int viewAngle = 120; //巡视角度
+
+        [Range(0.0f, 360.0f)]
+        public float viewAngle = 120; //巡视角度
+
+        [Range(0.0f, 360.0f)]
+        public float viewDirection = 0.0f;
 
         protected override void Awake()
         {
@@ -46,7 +51,10 @@ namespace MyGameComm
             if (viewDistance > 0)           
             {
                 Handles.color = new Color(0, 1.0f, 0, 0.2f);//透明绿
-                Handles.DrawSolidDisc(transform.position, Vector3.back, viewDistance);
+                Vector3 forward = moveSpeedX < 0 ? Vector2.left : Vector2.right;
+                forward = Quaternion.Euler(0, 0, moveSpeedX < 0 ? -viewDirection : viewDirection) * forward;
+                Vector3 endpoint = transform.position + (Quaternion.Euler(0, 0, viewAngle * 0.5f) * forward);
+                Handles.DrawSolidArc(transform.position, -Vector3.forward, (endpoint - transform.position).normalized, viewAngle, viewDistance);
             }
             base.OnDrawGizmosSelected();
 
