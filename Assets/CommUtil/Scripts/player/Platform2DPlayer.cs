@@ -10,13 +10,20 @@ namespace MyGameComm
 
         public float isGroundedCheckRadius = .2f; // 重叠圆半径 确定是否在地面
         public float x_MaxSpeed = 2f;
+
+        public float x_MaxLimitSpeed = 5f;
         public bool m_IsJump { get; set; }
-        private bool m_IsGrounded;            // 玩家是否在地面  
+        public bool m_IsGrounded;            // 玩家是否在地面  
 
         protected override void Awake()
         {
             base.Awake();
             m_GroundCheckTransform = transform.Find("GroundCheck");
+        }
+
+        protected override void FixedUpdate()
+        {
+            base.FixedUpdate();
         }
 
         // Update is called once per frame
@@ -27,14 +34,18 @@ namespace MyGameComm
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             if (h != 0)
             {
-                m_Rigidbody2D.velocity = new Vector2(h * x_MaxSpeed, m_Rigidbody2D.velocity.y);
+                //  float xSpeed = Mathf.Clamp(m_Rigidbody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
+                if (m_IsGrounded)
+                {
+                    m_Rigidbody2D.velocity = new Vector2(h * x_MaxSpeed, m_Rigidbody2D.velocity.y);
+                }
             }
             m_Animator.SetFloat("xSpeed", Math.Abs(h));
             return h;
         }
 
         //跳跃
-        public void handleJump()
+        public void handleJump(float realValidJunpButtonDownTime)
         {
             m_IsGrounded = false; //默认不在地面上
             //获取在一个圆的半径范围内的collider
@@ -47,7 +58,9 @@ namespace MyGameComm
             }
             if (m_IsJump && m_IsGrounded)
             {
-                m_Rigidbody2D.AddForce(new Vector2(0f, jumpForce)); //跳跃会和MovePosition冲突
+                print("==========================realValidJunpButtonDownTime:" + realValidJunpButtonDownTime);
+                float horizontalForce =  m_Rigidbody2D.velocity.x * 50; ;
+                m_Rigidbody2D.AddForce(new Vector2(horizontalForce, jumpForce * realValidJunpButtonDownTime)); //跳跃会和MovePosition冲突
             }
             m_IsJump = false;
             m_Animator.SetBool("isGround", m_IsGrounded);

@@ -20,9 +20,12 @@ namespace MyGameComm
 
         protected void Update()
         {
-            OnGenerateUserGesture();
+           
 
         }
+
+        //跳跃按钮按下的持续时间
+        private float jumpButtonDownKeepTime = 0f;
 
         //当产生用户手势
         private void OnGenerateUserGesture()
@@ -30,7 +33,19 @@ namespace MyGameComm
             if (!platform2DPlayer.m_IsJump)
             {
                 // Read the jump input in Update so button presses aren't missed.
-                platform2DPlayer.m_IsJump = CrossPlatformInputManager.GetButtonDown("Jump");
+                platform2DPlayer.m_IsJump = CrossPlatformInputManager.GetButtonUp("Jump");
+                if (CrossPlatformInputManager.GetButton("Jump"))
+                {
+                    jumpButtonDownKeepTime += Time.deltaTime;
+                }
+                else
+                {
+                    //当抬起跳跃按钮时候触发
+                    float realValidTime = Mathf.Clamp(jumpButtonDownKeepTime * 6, 0.6f, 1.5f);
+                    platform2DPlayer.handleJump(realValidTime);
+                    jumpButtonDownKeepTime = 0;
+                }
+                print("==========================jumpButtonDownKeepTime:" + jumpButtonDownKeepTime);
             }
 
             if (Input.GetKey(KeyCode.K))
@@ -47,14 +62,13 @@ namespace MyGameComm
             }
         }
 
-         void FixedUpdate()
+        void FixedUpdate()
         {
-            platform2DPlayer.handleJump();
+            OnGenerateUserGesture();
             // 是否按下左边Ctrl
             // bool crouch = Input.GetKey(KeyCode.LeftControl);
             float h = platform2DPlayer.OnHorizontalMove();
             platform2DPlayer.CheckFlip(h);
-
         }
     }
 }
