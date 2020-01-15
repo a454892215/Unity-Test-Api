@@ -51,7 +51,6 @@ namespace MyGameComm
                     platform2DPlayer.handleJump(realValidTime);
                     jumpButtonDownKeepTime = 0;
                 }
-                print("==========================jumpButtonDownKeepTime:" + jumpButtonDownKeepTime);
             }
 
             float h = CrossPlatformInputManager.GetAxis("Horizontal");

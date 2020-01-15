@@ -34,6 +34,9 @@ namespace MyGameComm
             if (h != 0)
             {
                 float xSpeed = Mathf.Clamp(m_Rigidbody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
+              //  xSpeed = m_IsGrounded ? xSpeed : h * x_MaxSpeed;
+
+
                 m_Rigidbody2D.velocity = new Vector2(xSpeed, m_Rigidbody2D.velocity.y);
             }
             m_Animator.SetFloat("xSpeed", Math.Abs(h));
@@ -55,8 +58,8 @@ namespace MyGameComm
             if (m_IsJump && m_IsGrounded)
             {
                 print("==========================realValidJunpButtonDownTime:" + realValidJunpButtonDownTime);
-                float horizontalForce =  m_Rigidbody2D.velocity.x * 50; ;
-                m_Rigidbody2D.AddForce(new Vector2(horizontalForce, jumpForce * realValidJunpButtonDownTime)); //跳跃会和MovePosition冲突
+                float horizontalForce =  m_Rigidbody2D.velocity.x * 100; ;
+                m_Rigidbody2D.AddForce(new Vector2(horizontalForce, jumpForce * 1)); //跳跃会和MovePosition冲突
             }
             m_IsJump = false;
             m_Animator.SetBool("isGround", m_IsGrounded);
