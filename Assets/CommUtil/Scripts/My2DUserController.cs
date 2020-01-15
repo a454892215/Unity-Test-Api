@@ -14,51 +14,24 @@ namespace MyGameComm
             platform2DPlayer = GetComponent<Platform2DPlayer>();
         }
 
-        protected void Start()
-        {
-        }
-
-        protected void Update()
-        {
-
-
-        }
-
         void FixedUpdate()
         {
-            OnGenerateUserGesture();
-
+            CheckUserGesture();
         }
 
-        //跳跃按钮按下的持续时间
-        private float jumpButtonDownKeepTime = 0f;
-
-        //当产生用户手势
-        private void OnGenerateUserGesture()
+        //检测用户手势
+        private void CheckUserGesture()
         {
-            bool isPress = CrossPlatformInputManager.GetButton("Jump");//当按下不放
-            if (isPress)
-            {
-                jumpButtonDownKeepTime += Time.deltaTime;
-                if(jumpButtonDownKeepTime > 0.15)
-                {
-                    platform2DPlayer.OnClickJump(1);
-                }
-            }
-            else
-            {
-                jumpButtonDownKeepTime = 0;
-            }
+            CheckAndHandleJumpAct();
 
-            if (CrossPlatformInputManager.GetButtonUp("Jump"))
-            {
-                platform2DPlayer.OnClickJump(0.7f);
-            }
+            CheckAndHandleHorizontalAct();
 
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            platform2DPlayer.OnHorizontalMove(h);
-            platform2DPlayer.CheckFlip(h);
+            CheckAndHandleActtckAct();
+        }
 
+        //检测和处理攻击动作
+        private void CheckAndHandleActtckAct()
+        {
             if (Input.GetKey(KeyCode.K))
             {
                 platform2DPlayer.m_Animator.SetFloat("fAttack", 0.1f);
@@ -73,6 +46,38 @@ namespace MyGameComm
             }
         }
 
+        //检测和处理水平行为
+        private void CheckAndHandleHorizontalAct()
+        {
+            float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            platform2DPlayer.OnHorizontalMove(h);
+            platform2DPlayer.CheckFlip(h);
+        }
 
+        //跳跃按钮按下的持续时间
+        private float jumpButtonDownKeepTime = 0f;
+
+        //检测和处理跳跃
+        private void CheckAndHandleJumpAct()
+        {
+            bool isPressJump = CrossPlatformInputManager.GetButton("Jump");//当按下不放
+            if (isPressJump)
+            {
+                jumpButtonDownKeepTime += Time.deltaTime;
+                if (jumpButtonDownKeepTime > 0.15)
+                {
+                    platform2DPlayer.OnClickJump(1);
+                }
+            }
+            else
+            {
+                jumpButtonDownKeepTime = 0;
+            }
+
+            if (CrossPlatformInputManager.GetButtonUp("Jump"))
+            {
+                platform2DPlayer.OnClickJump(0.7f);
+            }
+        }
     }
 }
