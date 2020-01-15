@@ -7,13 +7,10 @@ namespace MyGameComm
     public class Platform2DPlayer : CommPlayer
     {
         private Transform m_GroundCheckTransform;
-
         public float isGroundedCheckRadius = .2f; // 重叠圆半径 确定是否在地面
         public float x_MaxSpeed = 2f;
-
         public float x_MaxLimitSpeed = 3.5f;
-
-        public bool m_IsGrounded;            // 玩家是否在地面  
+        public bool m_IsGrounded; // 玩家是否在地面  
 
         protected override void Awake()
         {
@@ -24,11 +21,11 @@ namespace MyGameComm
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-            updatePlayerIsGround();
+            UpdatePlayerIsGround();
         }
 
         //更新玩家是否在地面的状态
-        private void updatePlayerIsGround()
+        private void UpdatePlayerIsGround()
         {
             m_IsGrounded = false; //默认不在地面上
             //获取在一个圆的半径范围内的collider
