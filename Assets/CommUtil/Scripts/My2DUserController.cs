@@ -59,23 +59,17 @@ namespace MyGameComm
         //检测和处理跳跃
         private void CheckAndHandleJumpAct()
         {
-            bool isPressJump = CrossPlatformInputManager.GetButton("Jump");//当按下不放
-            if (isPressJump)
+            if (CrossPlatformInputManager.GetButton("Jump"))//当按下不放
             {
                 numberOfJumpPress++;
-                if(numberOfJumpPress > 6)// 按下时间连续执行次数大于N
-                {
-                    numberOfJumpPress = 0;
-                    platform2DPlayer.OnClickJump(1);
-                }
-               
-                print("============:isPressJump:" + isPressJump + " numberOfJumpPress:" + numberOfJumpPress);
+
             }
             else
             {
-                if(numberOfJumpPress > 0) // 按下时间连续执行次数小于等于于N
+                if (numberOfJumpPress > 0) 
                 {
-                    platform2DPlayer.OnClickJump(0.7f);
+                    int factor = Mathf.Clamp(numberOfJumpPress, 1, 10);
+                    platform2DPlayer.OnClickJump(factor/10f);
                 }
                 numberOfJumpPress = 0;
             }
