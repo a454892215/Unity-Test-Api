@@ -62,18 +62,27 @@ namespace MyGameComm
             if (CrossPlatformInputManager.GetButton("Jump"))//当按下不放
             {
                 numberOfJumpPress++;
+                if(numberOfJumpPress > 4)
+                {
+                    ComfirmJump();
+                }
 
             }
             else
             {
-                if (numberOfJumpPress > 0) 
-                {
-                    int factor = Mathf.Clamp(numberOfJumpPress, 1, 10);
-                    platform2DPlayer.OnClickJump(factor/10f);
-                }
-                numberOfJumpPress = 0;
+                ComfirmJump();
             }
 
+        }
+
+        //确定跳跃
+        private void ComfirmJump()
+        {
+            if (numberOfJumpPress > 0)
+            {
+                platform2DPlayer.OnClickJump(numberOfJumpPress / 5f);
+            }
+            numberOfJumpPress = 0;
         }
     }
 }
