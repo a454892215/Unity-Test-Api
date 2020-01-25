@@ -54,8 +54,7 @@ namespace MyGameComm
             platform2DPlayer.CheckFlip(h);
         }
 
-        //跳跃按钮按下的持续时间
-        private float jumpButtonDownKeepTime = 0f;
+        private int numberOfJumpPress = 0; //每次跳跃连续执行次数
 
         //检测和处理跳跃
         private void CheckAndHandleJumpAct()
@@ -63,21 +62,24 @@ namespace MyGameComm
             bool isPressJump = CrossPlatformInputManager.GetButton("Jump");//当按下不放
             if (isPressJump)
             {
-                jumpButtonDownKeepTime += Time.deltaTime;
-                if (jumpButtonDownKeepTime > 0.15)
+                numberOfJumpPress++;
+                if(numberOfJumpPress > 6)// 按下时间连续执行次数大于N
                 {
+                    numberOfJumpPress = 0;
                     platform2DPlayer.OnClickJump(1);
                 }
+               
+                print("============:isPressJump:" + isPressJump + " numberOfJumpPress:" + numberOfJumpPress);
             }
             else
             {
-                jumpButtonDownKeepTime = 0;
+                if(numberOfJumpPress > 0) // 按下时间连续执行次数小于等于于N
+                {
+                    platform2DPlayer.OnClickJump(0.7f);
+                }
+                numberOfJumpPress = 0;
             }
 
-            if (CrossPlatformInputManager.GetButtonUp("Jump"))
-            {
-                platform2DPlayer.OnClickJump(0.7f);
-            }
         }
     }
 }
