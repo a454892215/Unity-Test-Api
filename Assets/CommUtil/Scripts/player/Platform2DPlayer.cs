@@ -17,6 +17,7 @@ namespace CommUtil.Scripts.player
             base.Awake();
             _mGroundCheckTransform = transform.Find("GroundCheck");
             _mRigidBody2D = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         protected override void FixedUpdate()
@@ -77,17 +78,13 @@ namespace CommUtil.Scripts.player
         private bool _mFacingRight = true; // 是否面向右边
         private static readonly int kIsGround = Animator.StringToHash("isGround");
         private static readonly int kXSpeed = Animator.StringToHash("xSpeed");
+        private SpriteRenderer _spriteRenderer;
 
         //转向
         private void Flip()
         {
-            // Switch the way the player is labelled as facing.
             _mFacingRight = !_mFacingRight;
-            // Multiply the player's x local scale by -1.
-            var transform1 = transform;
-            Vector3 theScale = transform1.localScale;
-            theScale.x *= -1;
-            transform1.localScale = theScale;
+            _spriteRenderer.flipX = !_spriteRenderer.flipX;
         }
     }
 }

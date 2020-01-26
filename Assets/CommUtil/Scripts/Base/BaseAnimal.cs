@@ -4,16 +4,14 @@ using UnityEngine.Serialization;
 
 namespace CommUtil.Scripts.Base
 {
-
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Animator))]
     public class BaseAnimal : MonoBehaviour
     {
-        public int maxHp = 100; //最大血量
         public int maxAttack = 10; //最大攻击力
         public int maxDefence = 10; //最大防御力
 
-        public int currentHp;
+
         public int currentAttack;
         public int currentDefence;
 
@@ -21,13 +19,11 @@ namespace CommUtil.Scripts.Base
         public float moveSpeedX = 1f; //每秒X轴移动速度
         public float moveSpeedY = 1f; //移动Y轴移动速度
 
-      
-        
+
         [FormerlySerializedAs("m_Animator")] public Animator mAnimator;
 
         protected virtual void Awake()
         {
-            currentHp = maxHp;
             currentAttack = maxAttack;
             currentDefence = maxDefence;
             mAnimator = GetComponent<Animator>();
@@ -45,16 +41,10 @@ namespace CommUtil.Scripts.Base
 
         protected virtual void FixedUpdate()
         {
-
         }
 
         protected virtual void OnMove()
         {
-        }
-
-        public void OnHpChange(int value)
-        {
-            currentHp += value;
         }
 
         public void OnAttackChange(int value)
@@ -70,16 +60,13 @@ namespace CommUtil.Scripts.Base
 #if UNITY_EDITOR
         protected void OnDrawGizmosSelected()
         {
-
             //绘制攻击类型1的范围
             if (attackType1Range > 0)
             {
                 Handles.color = new Color(1.0f, 0, 0, 0.1f);
                 Handles.DrawSolidDisc(transform.position, Vector3.back, attackType1Range);
             }
-
         }
 #endif
     }
 }
-
