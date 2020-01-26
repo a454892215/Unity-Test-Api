@@ -10,11 +10,12 @@ namespace CommUtil.Scripts.player
         public float x_MaxSpeed = 2f;
         public float x_MaxLimitSpeed = 3.5f;
         public bool m_IsGrounded; // 玩家是否在地面  
-
+        private Rigidbody2D _mRigidBody2D;
         protected override void Awake()
         {
             base.Awake();
             _mGroundCheckTransform = transform.Find("GroundCheck");
+            _mRigidBody2D = GetComponent<Rigidbody2D>();
         }
 
         protected override void FixedUpdate()
@@ -32,7 +33,7 @@ namespace CommUtil.Scripts.player
             for (int i = 0; i < colliders.Length; i++)
             {
                 //如果角色脚部检测到任何一个非角色碰撞 并且Y轴速度小于0.01f（避免与可以向上跳的台阶碰撞误判）
-                if (colliders[i].gameObject != gameObject && Math.Abs(MRigidbody2D.velocity.y) < 0.01f)
+                if (colliders[i].gameObject != gameObject && Math.Abs(_mRigidBody2D.velocity.y) < 0.01f)
                     m_IsGrounded = true;
             }
             mAnimator.SetBool("isGround", m_IsGrounded);
@@ -45,8 +46,8 @@ namespace CommUtil.Scripts.player
         {
             if (h != 0)
             {
-                float xSpeed = Mathf.Clamp(MRigidbody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
-                MRigidbody2D.velocity = new Vector2(xSpeed, MRigidbody2D.velocity.y);
+                float xSpeed = Mathf.Clamp(_mRigidBody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
+                _mRigidBody2D.velocity = new Vector2(xSpeed, _mRigidBody2D.velocity.y);
             }
             mAnimator.SetFloat("xSpeed", Math.Abs(h));
         }
@@ -56,8 +57,8 @@ namespace CommUtil.Scripts.player
         {
             if (m_IsGrounded)
             {
-                float horizontalForce = MRigidbody2D.velocity.x * 100; ;
-                MRigidbody2D.AddForce(new Vector2(horizontalForce, jumpForce * jumpForceFactor)); //跳跃会和MovePosition冲突
+                float horizontalForce = _mRigidBody2D.velocity.x * 100; ;
+                _mRigidBody2D.AddForce(new Vector2(horizontalForce, jumpForce * jumpForceFactor)); //跳跃会和MovePosition冲突
             }
         }
 

@@ -21,7 +21,8 @@ namespace CommUtil.Scripts.Base
         public float moveSpeedX = 1f; //每秒X轴移动速度
         public float moveSpeedY = 1f; //移动Y轴移动速度
 
-        protected Rigidbody2D MRigidbody2D;
+      
+        
         [FormerlySerializedAs("m_Animator")] public Animator mAnimator;
 
         protected virtual void Awake()
@@ -29,7 +30,6 @@ namespace CommUtil.Scripts.Base
             currentHp = maxHp;
             currentAttack = maxAttack;
             currentDefence = maxDefence;
-            MRigidbody2D = GetComponent<Rigidbody2D>();
             mAnimator = GetComponent<Animator>();
         }
 
