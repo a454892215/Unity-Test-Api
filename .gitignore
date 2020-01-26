@@ -3,7 +3,8 @@
 Products
 *.pbxuser
 *.perspectivev3
- 
+ .idea/
+
 # Unity3D
 /Build/
 /Temp/*
@@ -66,3 +67,4 @@ sysinfo.txt
  
 # Crashlytics generated file
 crashlytics-build.properties
+/.idea
