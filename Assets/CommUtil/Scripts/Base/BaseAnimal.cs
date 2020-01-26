@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace MyGameComm
+namespace CommUtil.Scripts.Base
 {
 
     [RequireComponent(typeof(Rigidbody2D))]
@@ -22,16 +21,16 @@ namespace MyGameComm
         public float moveSpeedX = 1f; //每秒X轴移动速度
         public float moveSpeedY = 1f; //移动Y轴移动速度
 
-        protected Rigidbody2D m_Rigidbody2D;
-        public Animator m_Animator;
+        protected Rigidbody2D MRigidbody2D;
+        [FormerlySerializedAs("m_Animator")] public Animator mAnimator;
 
         protected virtual void Awake()
         {
             currentHp = maxHp;
             currentAttack = maxAttack;
             currentDefence = maxDefence;
-            m_Rigidbody2D = GetComponent<Rigidbody2D>();
-            m_Animator = GetComponent<Animator>();
+            MRigidbody2D = GetComponent<Rigidbody2D>();
+            mAnimator = GetComponent<Animator>();
         }
 
         protected virtual void Start()

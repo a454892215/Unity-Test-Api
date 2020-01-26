@@ -1,12 +1,11 @@
 ﻿using System;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
-namespace MyGameComm
+namespace CommUtil.Scripts.player
 {
     public class Platform2DPlayer : CommPlayer
     {
-        private Transform m_GroundCheckTransform;
+        private Transform _mGroundCheckTransform;
         public float isGroundedCheckRadius = .2f; // 重叠圆半径 确定是否在地面
         public float x_MaxSpeed = 2f;
         public float x_MaxLimitSpeed = 3.5f;
@@ -15,7 +14,7 @@ namespace MyGameComm
         protected override void Awake()
         {
             base.Awake();
-            m_GroundCheckTransform = transform.Find("GroundCheck");
+            _mGroundCheckTransform = transform.Find("GroundCheck");
         }
 
         protected override void FixedUpdate()
@@ -29,14 +28,14 @@ namespace MyGameComm
         {
             m_IsGrounded = false; //默认不在地面上
             //获取在一个圆的半径范围内的collider
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheckTransform.position, isGroundedCheckRadius);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(_mGroundCheckTransform.position, isGroundedCheckRadius);
             for (int i = 0; i < colliders.Length; i++)
             {
                 //如果角色脚部检测到任何一个非角色碰撞 并且Y轴速度小于0.01f（避免与可以向上跳的台阶碰撞误判）
-                if (colliders[i].gameObject != gameObject && Math.Abs(m_Rigidbody2D.velocity.y) < 0.01f)
+                if (colliders[i].gameObject != gameObject && Math.Abs(MRigidbody2D.velocity.y) < 0.01f)
                     m_IsGrounded = true;
             }
-            m_Animator.SetBool("isGround", m_IsGrounded);
+            mAnimator.SetBool("isGround", m_IsGrounded);
         }
 
         // Update is called once per frame
@@ -46,10 +45,10 @@ namespace MyGameComm
         {
             if (h != 0)
             {
-                float xSpeed = Mathf.Clamp(m_Rigidbody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
-                m_Rigidbody2D.velocity = new Vector2(xSpeed, m_Rigidbody2D.velocity.y);
+                float xSpeed = Mathf.Clamp(MRigidbody2D.velocity.x + h * x_MaxSpeed, -x_MaxLimitSpeed, x_MaxLimitSpeed);
+                MRigidbody2D.velocity = new Vector2(xSpeed, MRigidbody2D.velocity.y);
             }
-            m_Animator.SetFloat("xSpeed", Math.Abs(h));
+            mAnimator.SetFloat("xSpeed", Math.Abs(h));
         }
 
         //当点击跳跃
@@ -57,8 +56,8 @@ namespace MyGameComm
         {
             if (m_IsGrounded)
             {
-                float horizontalForce = m_Rigidbody2D.velocity.x * 100; ;
-                m_Rigidbody2D.AddForce(new Vector2(horizontalForce, jumpForce * jumpForceFactor)); //跳跃会和MovePosition冲突
+                float horizontalForce = MRigidbody2D.velocity.x * 100; ;
+                MRigidbody2D.AddForce(new Vector2(horizontalForce, jumpForce * jumpForceFactor)); //跳跃会和MovePosition冲突
             }
         }
 

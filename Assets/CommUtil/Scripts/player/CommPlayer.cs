@@ -1,23 +1,12 @@
-﻿using System;
+﻿using CommUtil.Scripts.Base;
 
-namespace MyGameComm
+namespace CommUtil.Scripts.player
 {
     public class CommPlayer : BaseAnimal
     {
 
         public float jumpForce = 300f;
-
-        protected override void Start()
-        {
-            base.Start();
-        }
-
-        // Update is called once per frame
-        protected override void Update()
-        {
-            base.Update();
-        }
-
+        
     }
 
 

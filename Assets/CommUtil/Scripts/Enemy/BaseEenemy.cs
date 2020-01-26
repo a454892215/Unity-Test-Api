@@ -1,9 +1,10 @@
-﻿using UnityEditor;
+﻿using CommUtil.Scripts.Base;
+using CommUtil.Scripts.utils;
+using UnityEditor;
 using UnityEngine;
 
-namespace MyGameComm
+namespace CommUtil.Scripts.Enemy
 {
- 
     public class BaseEenemy : BaseAnimal
     {
         public int viewDistance = 5; //巡视范围
@@ -12,24 +13,7 @@ namespace MyGameComm
         public float viewAngle = 120; //巡视角度
 
         [Range(0.0f, 360.0f)]
-        public float viewDirection = 0.0f;
-
-        protected override void Awake()
-        {
-            base.Awake();
-        }
-
-        protected override void Start()
-        {
-            base.Start();
-        }
-
-        // Update is called once per frame
-        protected override void Update()
-        {
-            base.Update();
-
-        }
+        public float viewDirection;
 
         //检测是否可以前进 :如果自身的左边或者右边没有与地面碰撞，则表示到了边界，不能继续向前
         protected bool CanMoveForward(Collider2D collider2D)

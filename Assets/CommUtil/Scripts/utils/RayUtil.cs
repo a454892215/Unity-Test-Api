@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace MyGameComm
+namespace CommUtil.Scripts.utils
 {
-    public class RayUtil
+    public static class RayUtil
     {
 
         public static RaycastHit2D CastLine(Vector3 start,Vector3 end ,String targetLayerName)

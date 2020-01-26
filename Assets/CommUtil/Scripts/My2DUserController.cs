@@ -1,17 +1,17 @@
-﻿using System;
+﻿using CommUtil.Scripts.player;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-namespace MyGameComm
+namespace CommUtil.Scripts
 {
     [RequireComponent(typeof(Platform2DPlayer))]
     public class My2DUserController : MonoBehaviour
     {
-        private Platform2DPlayer platform2DPlayer;
+        private Platform2DPlayer _platform2DPlayer;
 
         void Awake()
         {
-            platform2DPlayer = GetComponent<Platform2DPlayer>();
+            _platform2DPlayer = GetComponent<Platform2DPlayer>();
         }
 
         void FixedUpdate()
@@ -26,23 +26,23 @@ namespace MyGameComm
 
             CheckAndHandleHorizontalAct();
 
-            CheckAndHandleActtckAct();
+            CheckAndHandleAttackAct();
         }
 
         //检测和处理攻击动作
-        private void CheckAndHandleActtckAct()
+        private void CheckAndHandleAttackAct()
         {
             if (Input.GetKey(KeyCode.K))
             {
-                platform2DPlayer.m_Animator.SetFloat("fAttack", 0.1f);
+                _platform2DPlayer.mAnimator.SetFloat("fAttack", 0.1f);
             }
             else if (Input.GetKey(KeyCode.L))
             {
-                platform2DPlayer.m_Animator.SetFloat("fAttack", 9.99f);
+                _platform2DPlayer.mAnimator.SetFloat("fAttack", 9.99f);
             }
             else
             {
-                platform2DPlayer.m_Animator.SetFloat("fAttack", -1);
+                _platform2DPlayer.mAnimator.SetFloat("fAttack", -1);
             }
         }
 
@@ -50,39 +50,39 @@ namespace MyGameComm
         private void CheckAndHandleHorizontalAct()
         {
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            platform2DPlayer.OnHorizontalMove(h);
-            platform2DPlayer.CheckFlip(h);
+            _platform2DPlayer.OnHorizontalMove(h);
+            _platform2DPlayer.CheckFlip(h);
         }
 
-        private int numberOfJumpPress = 0; //每次跳跃连续执行次数
+        private int _numberOfJumpPress; //每次跳跃连续执行次数
 
         //检测和处理跳跃
         private void CheckAndHandleJumpAct()
         {
             if (CrossPlatformInputManager.GetButton("Jump"))//当按下不放
             {
-                numberOfJumpPress++;
-                if(numberOfJumpPress > 4)
+                _numberOfJumpPress++;
+                if(_numberOfJumpPress > 4)
                 {
-                    ComfirmJump();
+                    ConfirmJump();
                 }
 
             }
             else
             {
-                ComfirmJump();
+                ConfirmJump();
             }
 
         }
 
         //确定跳跃
-        private void ComfirmJump()
+        private void ConfirmJump()
         {
-            if (numberOfJumpPress > 0)
+            if (_numberOfJumpPress > 0)
             {
-                platform2DPlayer.OnClickJump(numberOfJumpPress / 5f);
+                _platform2DPlayer.OnClickJump(_numberOfJumpPress / 5f);
             }
-            numberOfJumpPress = 0;
+            _numberOfJumpPress = 0;
         }
     }
 }
