@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CommUtil.Scripts.Enemy
 {
-    public class BaseEenemy : BaseAnimal
+    public class BaseEnemy : BaseAnimal
     {
         public int viewDistance = 5; //巡视范围
 
@@ -16,13 +16,13 @@ namespace CommUtil.Scripts.Enemy
         public float viewDirection;
 
         //检测是否可以前进 :如果自身的左边或者右边没有与地面碰撞，则表示到了边界，不能继续向前
-        protected bool CanMoveForward(Collider2D collider2D)
+        protected bool CanMoveForward(Collider2D mCollider2D)
         {
             int dir = moveSpeedX > 0 ? 1 : -1;
-            Vector3 start = transform.position + Vector3.right * (collider2D.bounds.size.x * 0.6f * dir);
+            Vector3 start = transform.position + Vector3.right * (mCollider2D.bounds.size.x * 0.6f * dir);
             Vector3 end = start + Vector3.down * 0.5f;
-            RaycastHit2D raycastHit2D = RayUtil.CastLine(start, end, "Ground");
-            return raycastHit2D.collider != null;
+            RaycastHit2D rayCastHit2D = RayUtil.CastLine(start, end, "Ground");
+            return rayCastHit2D.collider != null;
         }
 
 #if UNITY_EDITOR

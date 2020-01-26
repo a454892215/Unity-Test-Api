@@ -29,11 +29,11 @@ namespace CommUtil.Scripts.player
         {
             m_IsGrounded = false; //默认不在地面上
             //获取在一个圆的半径范围内的collider
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(_mGroundCheckTransform.position, isGroundedCheckRadius);
-            for (int i = 0; i < colliders.Length; i++)
+            Collider2D[] colliderArr = Physics2D.OverlapCircleAll(_mGroundCheckTransform.position, isGroundedCheckRadius);
+            for (int i = 0; i < colliderArr.Length; i++)
             {
                 //如果角色脚部检测到任何一个非角色碰撞 并且Y轴速度小于0.01f（避免与可以向上跳的台阶碰撞误判）
-                if (colliders[i].gameObject != gameObject && Math.Abs(_mRigidBody2D.velocity.y) < 0.01f)
+                if (colliderArr[i].gameObject != gameObject && Math.Abs(_mRigidBody2D.velocity.y) < 0.01f)
                     m_IsGrounded = true;
             }
             mAnimator.SetBool("isGround", m_IsGrounded);
@@ -66,17 +66,17 @@ namespace CommUtil.Scripts.player
         public void CheckFlip(float h)
         {
             // 如果玩家不是面向右边 则向右 
-            if (h > 0 && !m_FacingRight) Flip();
-            else if (h < 0 && m_FacingRight) Flip();
+            if (h > 0 && !_mFacingRight) Flip();
+            else if (h < 0 && _mFacingRight) Flip();
         }
 
-        private bool m_FacingRight = true;  // 是否面向右边
+        private bool _mFacingRight = true;  // 是否面向右边
 
         //转向
         private void Flip()
         {
             // Switch the way the player is labelled as facing.
-            m_FacingRight = !m_FacingRight;
+            _mFacingRight = !_mFacingRight;
             // Multiply the player's x local scale by -1.
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
