@@ -9,6 +9,8 @@ namespace CommUtil.Scripts.comm
         private float _originScaleX;
         private Transform _transform;
 
+        public int CurrentHp => _currentHp;
+
         private void Awake()
         {
             _currentHp = _maxHp;
@@ -24,5 +26,6 @@ namespace CommUtil.Scripts.comm
             hpTransformLocalScale.x = _currentHp / (float) _maxHp * _originScaleX;
             _transform.localScale = hpTransformLocalScale;
         }
+        
     }
 }
