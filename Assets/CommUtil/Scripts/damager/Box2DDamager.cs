@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CommUtil.Scripts.damager
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class Box2DDamager : MonoBehaviour
     {
         private float _lastValidAttackTime;
@@ -19,7 +20,6 @@ namespace CommUtil.Scripts.damager
             {
                 Destroy(other.gameObject);
             }
-
             _lastValidAttackTime = Time.time;
         }
     }

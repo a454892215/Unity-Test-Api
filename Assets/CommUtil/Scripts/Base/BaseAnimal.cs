@@ -27,8 +27,8 @@ namespace CommUtil.Scripts.Base
             currentAttack = maxAttack;
             currentDefence = maxDefence;
             mAnimator = GetComponent<Animator>();
-            hp = FindObjectOfType<Hp>();
-            print("==================hp:" + hp.gameObject);
+            hp = transform.Find("HPBar/HP").GetComponent<Hp>();
+            print("========Awake==========gameObject:" + hp.transform.parent.parent);
         }
 
         protected virtual void Start()

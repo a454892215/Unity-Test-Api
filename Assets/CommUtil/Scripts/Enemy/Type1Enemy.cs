@@ -1,5 +1,4 @@
-﻿using CommUtil.Scripts.comm;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CommUtil.Scripts.Enemy
 {
@@ -41,15 +40,6 @@ namespace CommUtil.Scripts.Enemy
             Vector2 velocity = _mRigidBody2D.velocity;
             velocity.x = Time.deltaTime * moveSpeedX;
             _mRigidBody2D.velocity = velocity;
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if ("Player".Equals(other.gameObject.tag))
-            {
-                var hp = other.gameObject.transform.GetChild(1).GetChild(0).GetComponent<Hp>();
-                hp.OnHpChange(-10);
-            }
         }
     }
 }
