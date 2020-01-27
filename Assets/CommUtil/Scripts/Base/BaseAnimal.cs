@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+﻿using CommUtil.Scripts.comm;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,7 +10,7 @@ namespace CommUtil.Scripts.Base
     {
         public int maxAttack = 10; //最大攻击力
         public int maxDefence = 10; //最大防御力
-
+        public Hp hp;
 
         public int currentAttack;
         public int currentDefence;
@@ -27,6 +27,8 @@ namespace CommUtil.Scripts.Base
             currentAttack = maxAttack;
             currentDefence = maxDefence;
             mAnimator = GetComponent<Animator>();
+            hp = FindObjectOfType<Hp>();
+            print("==================hp:" + hp.gameObject);
         }
 
         protected virtual void Start()
@@ -41,6 +43,11 @@ namespace CommUtil.Scripts.Base
 
         protected virtual void FixedUpdate()
         {
+        }
+
+        public Hp GetHp()
+        {
+            return hp;
         }
 
         protected virtual void OnMove()
@@ -63,8 +70,8 @@ namespace CommUtil.Scripts.Base
             //绘制攻击类型1的范围
             if (attackType1Range > 0)
             {
-                Handles.color = new Color(1.0f, 0, 0, 0.1f);
-                Handles.DrawSolidDisc(transform.position, Vector3.back, attackType1Range);
+                /*Handles.color = new Color(1.0f, 0, 0, 0.1f);
+                Handles.DrawSolidDisc(transform.position, Vector3.back, attackType1Range);*/
             }
         }
 #endif

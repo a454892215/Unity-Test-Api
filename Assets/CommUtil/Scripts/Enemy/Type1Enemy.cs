@@ -5,13 +5,14 @@ namespace CommUtil.Scripts.Enemy
 {
     //平台游戏类型的 Enemy
     [RequireComponent(typeof(BoxCollider2D))]
-    public sealed class EnemyType1 : BaseEnemy
+    public sealed class Type1Enemy : BaseEnemy
     {
         BoxCollider2D _mBoxCollider2D;
         private Rigidbody2D _mRigidBody2D;
 
         protected override void Awake()
         {
+            base.Awake();
             _mBoxCollider2D = GetComponent<BoxCollider2D>();
             _mRigidBody2D = GetComponent<Rigidbody2D>();
         }
