@@ -15,8 +15,8 @@ namespace CommUtil.Scripts.damager
             var dTime = Time.time - _lastValidAttackTime;
             if (!(dTime > 1)) return;
             print("==============:" + baseAnimal + "   dTime:" + dTime + "  other.tag:" + other.tag);
-            baseAnimal.hp.OnHpChange(-10);
-            if (baseAnimal.hp.CurrentHp < 1)
+            baseAnimal.Hp.OnHpChange(-10);
+            if (baseAnimal.Hp.CurrentHp < 1)
             {
                 Destroy(other.gameObject);
             }

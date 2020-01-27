@@ -85,6 +85,9 @@ namespace CommUtil.Scripts.player
         {
             _mFacingRight = !_mFacingRight;
             _spriteRenderer.flipX = !_spriteRenderer.flipX;
+            var damagerScale = DamagerTransform.localScale;
+            damagerScale.x = damagerScale.x * -1;
+            DamagerTransform.localScale = damagerScale;
         }
     }
 }

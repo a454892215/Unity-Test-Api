@@ -305,6 +305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Damager
       objectReference: {fileID: 0}
+    - target: {fileID: 3495215923337438496, guid: 92b8376495a8685468debc2a529c62d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3495215923337438499, guid: 92b8376495a8685468debc2a529c62d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -394,6 +399,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 0.16851501
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495215924529873272, guid: 92b8376495a8685468debc2a529c62d9,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92b8376495a8685468debc2a529c62d9, type: 3}
@@ -502,11 +512,11 @@ GameObject:
   - component: {fileID: 1023485586}
   m_Layer: 0
   m_Name: Damager
-  m_TagString: Untagged
+  m_TagString: Damager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1023485586
 Transform:
   m_ObjectHideFlags: 0
@@ -4763,14 +4773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95766c3d239b3be429a13f15d845ad9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAttack: 10
-  maxDefence: 10
-  hp: {fileID: 0}
-  currentAttack: 0
-  currentDefence: 0
   attackType1Range: 2
   moveSpeedX: 1
-  moveSpeedY: 1
   mAnimator: {fileID: 0}
   jumpForce: 850
   isGroundedCheckRadius: 0.2

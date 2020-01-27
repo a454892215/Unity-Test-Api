@@ -34,16 +34,19 @@ namespace CommUtil.Scripts
         {
             if (Input.GetKey(KeyCode.K))
             {
-                _platform2DPlayer.mAnimator.SetFloat("fAttack", 0.1f);
+                _platform2DPlayer.mAnimator.SetFloat(kFAttack, 0.1f);
+                _platform2DPlayer.DamagerTransform.gameObject.SetActive(true);
             }
             else if (Input.GetKey(KeyCode.L))
             {
-                _platform2DPlayer.mAnimator.SetFloat("fAttack", 9.99f);
+                _platform2DPlayer.mAnimator.SetFloat(kFAttack, 9.99f);
+                _platform2DPlayer.DamagerTransform.gameObject.SetActive(true);
             }
             else
             {
-                _platform2DPlayer.mAnimator.SetFloat("fAttack", -1);
-            }
+                _platform2DPlayer.mAnimator.SetFloat(kFAttack, -1);
+                _platform2DPlayer.DamagerTransform.gameObject.SetActive(false);
+            } 
         }
 
         //检测和处理水平行为
@@ -55,6 +58,7 @@ namespace CommUtil.Scripts
         }
 
         private int _numberOfJumpPress; //每次跳跃连续执行次数
+        private static readonly int kFAttack = Animator.StringToHash("fAttack");
 
         //检测和处理跳跃
         private void CheckAndHandleJumpAct()

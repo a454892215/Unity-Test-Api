@@ -8,27 +8,26 @@ namespace CommUtil.Scripts.Base
     [RequireComponent(typeof(Animator))]
     public class BaseAnimal : MonoBehaviour
     {
-        public int maxAttack = 10; //最大攻击力
-        public int maxDefence = 10; //最大防御力
-        public Hp hp;
+        private Hp _hp;
 
-        public int currentAttack;
-        public int currentDefence;
+        public Hp Hp => _hp;
 
         public int attackType1Range = 2; //攻击类型1范围
         public float moveSpeedX = 1f; //每秒X轴移动速度
-        public float moveSpeedY = 1f; //移动Y轴移动速度
-
 
         [FormerlySerializedAs("m_Animator")] public Animator mAnimator;
 
-        protected virtual void Awake()
+        private Transform _damagerTransform;
+        public Transform DamagerTransform => _damagerTransform;
+
+        protected virtual void Awake() 
         {
-            currentAttack = maxAttack;
-            currentDefence = maxDefence;
+            //   currentAttack = maxAttack;
+            //   currentDefence = maxDefence;
             mAnimator = GetComponent<Animator>();
-            hp = transform.Find("HPBar/HP").GetComponent<Hp>();
-            print("========Awake==========gameObject:" + hp.transform.parent.parent);
+            _hp = transform.Find(Cv.PathPh).GetComponent<Hp>();
+            _damagerTransform = transform.Find(Cv.PathDamager);
+            print("========Awake==========gameObject:" + _hp.transform.parent.parent);
         }
 
         protected virtual void Start()
@@ -45,24 +44,10 @@ namespace CommUtil.Scripts.Base
         {
         }
 
-        public Hp GetHp()
-        {
-            return hp;
-        }
-
         protected virtual void OnMove()
         {
         }
 
-        public void OnAttackChange(int value)
-        {
-            currentAttack += value;
-        }
-
-        public void OnDefenceChange(int value)
-        {
-            currentDefence += value;
-        }
 
 #if UNITY_EDITOR
         protected void OnDrawGizmosSelected()
