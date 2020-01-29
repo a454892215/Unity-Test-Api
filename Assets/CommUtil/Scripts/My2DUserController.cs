@@ -32,12 +32,12 @@ namespace CommUtil.Scripts
         //检测和处理攻击动作
         private void CheckAndHandleAttackAct()
         {
-            if (Input.GetKey(KeyCode.K))
+            if (CrossPlatformInputManager.GetButton("Fire1"))
             {
                 _platform2DPlayer.mAnimator.SetFloat(KfAttack, 0.1f);
                 _platform2DPlayer.DamagerTransform.gameObject.SetActive(true);
             }
-            else if (Input.GetKey(KeyCode.L))
+            else if (CrossPlatformInputManager.GetButton("Fire2"))
             {
                 _platform2DPlayer.mAnimator.SetFloat(KfAttack, 9.99f);
                 _platform2DPlayer.DamagerTransform.gameObject.SetActive(true);
@@ -46,7 +46,7 @@ namespace CommUtil.Scripts
             {
                 _platform2DPlayer.mAnimator.SetFloat(KfAttack, -1);
                 _platform2DPlayer.DamagerTransform.gameObject.SetActive(false);
-            } 
+            }
         }
 
         //检测和处理水平行为
@@ -63,20 +63,18 @@ namespace CommUtil.Scripts
         //检测和处理跳跃
         private void CheckAndHandleJumpAct()
         {
-            if (CrossPlatformInputManager.GetButton("Jump"))//当按下不放
+            if (CrossPlatformInputManager.GetButton("Jump")) //当按下不放
             {
                 _numberOfJumpPress++;
-                if(_numberOfJumpPress > 4)
+                if (_numberOfJumpPress > 4)
                 {
                     ConfirmJump();
                 }
-
             }
             else
             {
                 ConfirmJump();
             }
-
         }
 
         //确定跳跃
@@ -86,6 +84,7 @@ namespace CommUtil.Scripts
             {
                 _platform2DPlayer.OnClickJump(_numberOfJumpPress / 5f);
             }
+
             _numberOfJumpPress = 0;
         }
     }
