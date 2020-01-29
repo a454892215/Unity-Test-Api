@@ -14,7 +14,7 @@ namespace CommUtil.Scripts.damager
             if (baseAnimal == null || gameObject.tag.Equals(other.tag)) return;
             var dTime = Time.time - _lastValidAttackTime;
             if (!(dTime > 0.2f)) return;
-            print("==============:" + baseAnimal + "   dTime:" + dTime + "  other.tag:" + other.tag);
+           // print("==============:" + baseAnimal + "   dTime:" + dTime + "  other.tag:" + other.tag);
             baseAnimal.Hp.OnHpChange(-(int) Random.Range(10f, 20f));
             if (baseAnimal.Hp.CurrentHp < 1)
             {

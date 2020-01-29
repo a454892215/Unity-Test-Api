@@ -19,7 +19,7 @@ namespace CommUtil.Scripts
             }
         }
 
-        public void SwitchScene(String sceneName)
+        public static void SwitchScene(String sceneName)
         {
             SceneManager.LoadScene(sceneName);
         }

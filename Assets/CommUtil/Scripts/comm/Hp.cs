@@ -23,6 +23,7 @@ namespace CommUtil.Scripts.comm
         {
             _currentHp = maxHp;
             _textMeshProUgui.text = _currentHp + "/" + maxHp;
+            _originScaleX = _transformHp.localScale.x;
         }
 
         public void OnHpChange(int value)
@@ -31,7 +32,6 @@ namespace CommUtil.Scripts.comm
             _currentHp = Mathf.Clamp(_currentHp, 0, maxHp);
             _textMeshProUgui.text = _currentHp + "/" + maxHp;
             var hpTransformLocalScale = _transformHp.localScale;
-            _originScaleX = hpTransformLocalScale.x;
             hpTransformLocalScale.x = _currentHp / (float) maxHp * _originScaleX;
             _transformHp.localScale = hpTransformLocalScale;
         }
