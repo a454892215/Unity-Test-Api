@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace CommUtil.Scripts.comm
 {
@@ -15,10 +16,14 @@ namespace CommUtil.Scripts.comm
 
         private void Awake()
         {
-            _maxHp = Random.Range(100, 300);
-            _currentHp = _maxHp;
             _transformHp = transform.Find("HP");
             _textMeshProUgui = transform.Find("Canvas/HpText").GetComponent<TextMeshProUGUI>();
+        }
+
+        private void Start()
+        {
+            _maxHp = Random.Range(100, 300);
+            _currentHp = _maxHp;
             _textMeshProUgui.text = _currentHp + "/" + _maxHp;
         }
 

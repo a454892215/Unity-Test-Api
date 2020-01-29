@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769766038179231793}
   - component: {fileID: 7661303630745050015}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769766038758032344}
   - component: {fileID: 769766038758032347}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769766038774795668}
   - component: {fileID: 769766038774795671}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3495215923388947370}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Damager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 3495215924612857840}
   - component: {fileID: 3495215924612857841}
   - component: {fileID: 3495215924612857842}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Attack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 6988646735328589386}
   - component: {fileID: 6988646735328589388}
   - component: {fileID: 6988646735328589387}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 6988646736603811720}
   - component: {fileID: 6988646736603811767}
   - component: {fileID: 6988646736603811766}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 884890444115891477}
   - component: {fileID: 884890444115891476}
   - component: {fileID: 884890444115891479}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Attack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884890445071462735}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Damager
   m_TagString: Damager
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 884890445451732533}
   - component: {fileID: 884890445451732538}
   - component: {fileID: 884890445451732539}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346749520222689717}
   - component: {fileID: 1346749520222689718}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346749520239450105}
   - component: {fileID: 1346749520239450106}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346749520835046416}
   - component: {fileID: 1789470237}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 5109361931792930623}
   - component: {fileID: 5109361931792930622}
   - component: {fileID: 5109361931792930614}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CommPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -610,7 +610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5109361932710240436}
   - component: {fileID: 5109361932710240439}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 1199206733260570793}
   - component: {fileID: 4085383002956007493}
   - component: {fileID: 1516166701645651477}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
