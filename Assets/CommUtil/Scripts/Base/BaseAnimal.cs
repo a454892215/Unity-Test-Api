@@ -27,7 +27,7 @@ namespace CommUtil.Scripts.Base
             mAnimator = GetComponent<Animator>();
             _hp = transform.Find(Cv.PathPh).GetComponent<Hp>();
             _damagerTransform = transform.Find(Cv.PathDamager);
-            print("========Awake==========gameObject:" + _hp.transform.parent.parent);
+            print("========Awake==========gameObject:" + _hp.transform.parent);
         }
 
         protected virtual void Start()
