@@ -13,13 +13,14 @@ namespace CommUtil.Scripts.damager
             var baseAnimal = other.gameObject.GetComponent<BaseAnimal>();
             if (baseAnimal == null || gameObject.tag.Equals(other.tag)) return;
             var dTime = Time.time - _lastValidAttackTime;
-            if (!(dTime > 1)) return;
+            if (!(dTime > 0.2f)) return;
             print("==============:" + baseAnimal + "   dTime:" + dTime + "  other.tag:" + other.tag);
-            baseAnimal.Hp.OnHpChange(-10);
+            baseAnimal.Hp.OnHpChange(-(int) Random.Range(10f, 20f));
             if (baseAnimal.Hp.CurrentHp < 1)
             {
                 Destroy(other.gameObject);
             }
+
             _lastValidAttackTime = Time.time;
         }
     }

@@ -15,6 +15,7 @@ namespace CommUtil.Scripts.comm
 
         private void Awake()
         {
+            _maxHp = Random.Range(100, 300);
             _currentHp = _maxHp;
             _transformHp = transform.Find("HP");
             _textMeshProUgui = transform.Find("Canvas/HpText").GetComponent<TextMeshProUGUI>();
@@ -31,6 +32,5 @@ namespace CommUtil.Scripts.comm
             hpTransformLocalScale.x = _currentHp / (float) _maxHp * _originScaleX;
             _transformHp.localScale = hpTransformLocalScale;
         }
-        
     }
 }
