@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &145361092
 RectTransform:
   m_ObjectHideFlags: 0
@@ -376,13 +376,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 3.0477905, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 347146182}
-    characterCount: 4
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -845,6 +845,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyType1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713016380017215869, guid: da61639442964904bbd98f99645ead5a,
+        type: 3}
+      propertyPath: moveSpeedX
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3713016380017215870, guid: da61639442964904bbd98f99645ead5a,
         type: 3}
@@ -4596,13 +4601,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 3.0477905, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5850677348073012000}
-    characterCount: 4
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -4637,7 +4642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5850677348206998778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4840,7 +4845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6077752929594252592 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5109361931792930620, guid: fd8ee687415551045b18804566fefc03,
