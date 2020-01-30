@@ -12,12 +12,12 @@ EditorBuildSettings:
     path: Assets/SampleScenes/Scenes/2dCharacter.unity
     guid: e64703861e6c7d748bab0c2dee48b08d
   - enabled: 1
+    path: Assets/CommUtil/Scene1.unity
+    guid: 636e359fd6225c1429a5700996e53d3e
+  - enabled: 1
     path: Assets/CommUtil/Scene3.unity
     guid: 1f1b50da78fb2b043add83ee2fec1148
   - enabled: 1
     path: Assets/CommUtil/Scene2.unity
     guid: d2e16848588617d408611df7ce0c0c86
-  - enabled: 1
-    path: Assets/CommUtil/Scene1.unity
-    guid: 636e359fd6225c1429a5700996e53d3e
   m_configObjects: {}
