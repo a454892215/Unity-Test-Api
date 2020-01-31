@@ -19,6 +19,7 @@ namespace CommUtil.Scripts
             }
         }
 
+        //去指定场景
         public static void SwitchScene(String sceneName)
         {
             SceneManager.LoadScene(sceneName);
@@ -40,6 +41,12 @@ namespace CommUtil.Scripts
             string num = currentSceneName.Substring(currentSceneName.Length - 1);
             int targetNum = int.Parse(num) - 1;
             SceneManager.LoadScene("Scene" + targetNum);
+        }
+
+        //退出游戏
+        public void ExitGame()
+        {
+           Application.Quit();
         }
     }
 }
