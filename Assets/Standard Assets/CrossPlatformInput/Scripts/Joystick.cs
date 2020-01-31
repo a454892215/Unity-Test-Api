@@ -49,15 +49,14 @@ namespace Standard_Assets.CrossPlatformInput.Scripts
         }
 
         //更新虚拟轴
-        void UpdateVirtualAxes(Vector3 value)
+        void UpdateVirtualAxes(Vector3 currentPos)
         {
-            var delta = _mStartPos - value;
+            var delta = _mStartPos - currentPos;
             delta.y = -delta.y;
             delta /= movementRange;
             if (_mUseX)
             {
                 _mHorizontalVirtualAxis.Update(-delta.x);
-                print("=========UpdateVirtualAxes========x :" + (-delta.x));
             }
 
             if (_mUseY)
