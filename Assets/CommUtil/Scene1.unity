@@ -296,26 +296,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4535320123559681867, guid: 293258bd9c553a64ea6959591d74d921,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4535320123559681867, guid: 293258bd9c553a64ea6959591d74d921,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4535320123559681867, guid: 293258bd9c553a64ea6959591d74d921,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4535320123559681867, guid: 293258bd9c553a64ea6959591d74d921,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5850677347629151410, guid: 293258bd9c553a64ea6959591d74d921,
         type: 3}
       propertyPath: m_Name
@@ -374,26 +354,6 @@ PrefabInstance:
     - target: {fileID: 5850677347629151411, guid: 293258bd9c553a64ea6959591d74d921,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052851282535605165, guid: 293258bd9c553a64ea6959591d74d921,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052851282535605165, guid: 293258bd9c553a64ea6959591d74d921,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052851282535605165, guid: 293258bd9c553a64ea6959591d74d921,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052851282535605165, guid: 293258bd9c553a64ea6959591d74d921,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
