@@ -18,6 +18,10 @@ namespace CommUtil.Scripts.damager
             baseAnimal.Hp.OnHpChange(-(int) Random.Range(10f, 20f));
             if (baseAnimal.Hp.CurrentHp < 1)
             {
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    SceneSwitcher.SwitchScene("Scene0");
+                }
                 Destroy(other.gameObject);
             }
 
