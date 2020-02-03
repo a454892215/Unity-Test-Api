@@ -42,6 +42,8 @@ namespace CommUtil.Scripts.comm
 
         public void OnOperationResponse(OperationResponse operationResponse)
         {
+            var obj = operationResponse.Parameters[1];
+            print("=收到服务器当响应==OnOperationResponse=====status:" + obj);
         }
 
         public void OnStatusChanged(StatusCode statusCode)
@@ -55,6 +57,7 @@ namespace CommUtil.Scripts.comm
 
         public void OnEvent(EventData eventData)
         {
+            print("=====我是来自服务器的事件=====obj:"+ eventData.Parameters[1]);
         }
 
         public void SendMsg(int code, String msg)
